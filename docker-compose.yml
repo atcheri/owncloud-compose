@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  owncloud:
+    image: owncloud/server:latest
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - owncloud_data:/var/www/html
+    environment:
+      - OWNCLOUD_DOMAIN=localhost
+    depends_on:
+      - db
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=owncloud
+      - MYSQL_USER=owncloud-user
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  owncloud_data:
+  db_data:
