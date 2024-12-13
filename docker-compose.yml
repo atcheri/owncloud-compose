@@ -10,7 +10,7 @@ volumes:
 
 services:
   owncloud:
-    image: owncloud/server:10.15
+    image: owncloud/server:10.14
     container_name: owncloud_server
     restart: always
     ports:
