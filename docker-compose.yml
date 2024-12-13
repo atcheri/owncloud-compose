@@ -31,6 +31,8 @@ services:
       - OWNCLOUD_MYSQL_UTF8MB4=true
       - OWNCLOUD_REDIS_ENABLED=true
       - OWNCLOUD_REDIS_HOST=redis
+      - OWNCLOUD_VERSION=${OWNCLOUD_VERSION}
+      - HTTP_PORT=${HTTP_PORT}
     healthcheck:
       test: ["CMD", "/usr/bin/healthcheck"]
       interval: 30s
