@@ -27,12 +27,14 @@ services:
       - OWNCLOUD_DB_NAME=owncloud
       - OWNCLOUD_DB_USERNAME=owncloud-user
       - OWNCLOUD_DB_PASSWORD=${MYSQL_PASSWORD}
-      - OWNCLOUD_DB_HOST=mariadb
+      - OWNCLOUD_DB_HOST=mariadb:3306
       - OWNCLOUD_ADMIN_USERNAME=${ADMIN_USERNAME}
       - OWNCLOUD_ADMIN_PASSWORD=${ADMIN_PASSWORD}
       - OWNCLOUD_MYSQL_UTF8MB4=true
       - OWNCLOUD_REDIS_ENABLED=true
       - OWNCLOUD_REDIS_HOST=redis
+      - OWNCLOUD_SKIP_CHOWN=true
+      - OWNCLOUD_DB_FAIL_ON_UPGRADE=true
     healthcheck:
       test: ["CMD", "/usr/bin/healthcheck"]
       interval: 30s
